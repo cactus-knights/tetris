@@ -1,11 +1,11 @@
 #  Preparation
-Install appropriate SDL libraries
+Install appropriate SDL libraries.
 
 ## Windows/macOS
 Use [download links](https://www.libsdl.org/download-2.0.php) from [SDL website](https://www.libsdl.org)
 
 ## Linux
-Use command suitable for you
+Use command suitable for you.
 
 ### Debian-based
 ```bash
@@ -22,9 +22,9 @@ $ yum install SDL-devel SDL_mixer-devel SDL_image-devel
 ```
 
 # Compiling
-Follow the instructions
 
 ## Linux
+Use commands:
 ```bash
 $ git clone https://github.com/cactus-knights/tetris
 
@@ -34,9 +34,9 @@ $ g++ main.cpp logic.cpp -lSDL2 -lSDL2_image -lSDL2_mixer -o tetris
 ```
 
 # Running
-Follow the instructions
 
 ## Linux
+Use commands:
 ```bash
 $ ./tetris
 ```
