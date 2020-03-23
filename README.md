@@ -1,14 +1,12 @@
 # Tetris
 
-![Figure](https://github.com/cactus-knights/tetris/blob/master/favicon.png)
+SDL version of classic Tetris game ![Figure](https://github.com/cactus-knights/tetris/blob/master/favicon.png).  
+Project activity by first-year students of SFU (MMCS) 🎓.
 
-SDL version of classic Tetris game.  
-Project activity by first-year students of SFU (MMCS).  
+Glory to Cactus Tea Order 🌵!
 
-Glory to Cactus Tea Order!
-
-## For Windows Users 📥:
-### [Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
+## For Windows Users :
+### [🕹️ Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
 
 ## For Devs & Linux Users 💻:
 #### [💻 Preparation, Compiling, Running](https://github.com/cactus-knights/tetris/blob/master/Preparation.md)
