@@ -1,5 +1,4 @@
 #  Preparation
-
 Install appropriate SDL libraries
 
 ## Windows/Mac OS X
@@ -20,4 +19,22 @@ $ sudo pacman -S install sdl2 sdl2_image sdl2_mixer
 ### RPM-based
 ```bash
 $ yum install SDL-devel SDL_mixer-devel SDL_image-devel
+```
+
+# Compiling
+
+### Linux
+```bash
+$ git clone https://github.com/cactus-knights/tetris
+
+$ cd tetris
+
+$ g++ main.cpp logic.cpp -lSDL2 -lSDL2_image -lSDL2_mixer -o tetris
+```
+
+## Running
+
+### Linux
+```bash
+$ ./tetris
 ```
