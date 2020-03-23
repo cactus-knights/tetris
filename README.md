@@ -2,10 +2,11 @@
 
 The SDL version of classic Tetris game.
 
-## [Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
+## For Windows Users:
+[Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
 
-### For Devs & Linux Users
-### [Preparation, Compiling, Running](https://github.com/cactus-knights/tetris/blob/master/Preparation.md)
+## For Devs & Linux Users
+[Preparation, Compiling, Running](https://github.com/cactus-knights/tetris/blob/master/Preparation.md)
 
 ## Authors
 
