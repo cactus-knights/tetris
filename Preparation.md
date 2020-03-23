@@ -6,6 +6,8 @@ Install appropriate SDL libraries
 Use [download links](https://www.libsdl.org/download-2.0.php) from [SDL website](https://www.libsdl.org)
 
 ## Linux
+Use command suitable for you
+
 ### Debian-based
 ```bash
 $ sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev
