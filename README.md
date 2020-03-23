@@ -2,6 +2,7 @@
 
 The SDL version of classic Tetris game.
 
+[Скачать](https://github.com/cactus-knights/tetris/blob/master/2.md)
 ## Prerequisites
 
 Install appropriate SDL libraries
