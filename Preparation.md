@@ -23,7 +23,7 @@ $ yum install SDL-devel SDL_mixer-devel SDL_image-devel
 
 # Compiling
 
-### Linux
+## Linux
 ```bash
 $ git clone https://github.com/cactus-knights/tetris
 
@@ -32,9 +32,9 @@ $ cd tetris
 $ g++ main.cpp logic.cpp -lSDL2 -lSDL2_image -lSDL2_mixer -o tetris
 ```
 
-## Running
+# Running
 
-### Linux
+## Linux
 ```bash
 $ ./tetris
 ```
