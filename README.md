@@ -2,26 +2,9 @@
 
 The SDL version of classic Tetris game.
 
-[Скачать](https://github.com/cactus-knights/tetris/blob/master/2.md)
-## Prerequisites
+## [Download](https://github.com/cactus-knights/tetris/releases)
 
-Install appropriate SDL libraries
-
-### Linux
-#### Debian-based
-```bash
-$ sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev
-```
-#### RPM-based
-```bash
-$ yum install SDL-devel SDL_mixer-devel SDL_image-devel
-```
-#### Arch/Manjaro
-```bash
-$ sudo pacman -S install sdl2 sdl2_image sdl2_mixer
-```
-### Windows/Mac OS X
-Use [download links](https://www.libsdl.org/download-2.0.php) from [SDL website](https://www.libsdl.org/index.php)
+### [Preparation for Development](https://github.com/cactus-knights/tetris/blob/master/Preparation.md)
 
 ## Compiling
 
