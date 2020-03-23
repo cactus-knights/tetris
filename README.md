@@ -1,4 +1,6 @@
-# Tetris ![Figure](https://github.com/cactus-knights/tetris/blob/master/favicon.png)
+# Tetris
+
+![Figure](https://github.com/cactus-knights/tetris/blob/master/favicon.png)
 
 SDL version of classic Tetris game.  
 Project activity by first-year students of SFU (MMCS).  
