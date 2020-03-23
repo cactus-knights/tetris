@@ -6,7 +6,7 @@ Project activity by first-year students of SFU (MMCS).
 Glory to Cactus Tea Order!
 
 ## For Windows Users:
-###[Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
+### [Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
 
 ## For Devs & Linux Users
 [Preparation, Compiling, Running](https://github.com/cactus-knights/tetris/blob/master/Preparation.md)
