@@ -22,7 +22,7 @@ $ yum install SDL-devel SDL_mixer-devel SDL_image-devel
 ```
 
 # Compiling
-Follow the instructions.
+Follow the instructions
 
 ## Linux
 ```bash
@@ -34,7 +34,7 @@ $ g++ main.cpp logic.cpp -lSDL2 -lSDL2_image -lSDL2_mixer -o tetris
 ```
 
 # Running
-Follow the instructions.
+Follow the instructions
 
 ## Linux
 ```bash
