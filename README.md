@@ -23,3 +23,4 @@ Glory to Cactus Tea Order 🌵!
 ## Third-party sources
 * [More Perfect DOS VGA](http://laemeur.sdf.org/fonts/) font by [LÆMEUR](http://laemeur.sdf.org/)
 * *Final Fantasy I* NES sounds and *'Prelude'* theme by Nobuo Uematsu
+* *Super Mario Bros* sounds
