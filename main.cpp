@@ -25,20 +25,25 @@
 	const std::string SND_PATH = "data\\snd\\";
 #endif
 
+const int BLOCK_SIZE = 22;
+
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
 const int START_POS_X = 210;
 const int START_POS_Y = 21;
 
-const int NEXT_POS_X = 516;
-const int NEXT_POS_Y = 95;
+const int NEXT_POS_X = 518;
+const int NEXT_POS_Y = 91;
 
 const int SCORE_POS_X = 473;
 const int SCORE_POS_Y = 232;
 
 const int SCORE_LOSE_POS_X = 250;
 const int SCORE_LOSE_POS_Y = 273;
+
+const int LEVEL_POS_X = 575;
+const int LEVEL_POS_Y = 256;
 
 const int NUM_SIZE = 20;
 
@@ -77,8 +82,8 @@ void draw_level(int level)
         SDL_Surface* lvlo = IMG_Load((IMG_PATH+name).c_str());
         SDL_Rect coord;
 
-        coord.x = NUM_SIZE*i + 575;
-        coord.y = 256;
+        coord.x = NUM_SIZE*i + LEVEL_POS_X;
+        coord.y = LEVEL_POS_Y;
 
         SDL_BlitSurface(lvlo, NULL, srf, &coord);
         SDL_UpdateWindowSurface(win);
@@ -140,8 +145,8 @@ void draw_field(Field& field)
             figures[k].second = field[i][j];
 
 			SDL_Rect coord;
-			coord.x = 22*j+START_POS_X;
-			coord.y = 22*(i-4)+START_POS_Y;
+			coord.x = BLOCK_SIZE*j+START_POS_X;
+			coord.y = BLOCK_SIZE*(i-4)+START_POS_Y;
 
 			SDL_BlitSurface(figures[k].first, NULL, srf, &coord);
 			SDL_UpdateWindowSurface(win);
@@ -167,8 +172,8 @@ void draw_next(Field nextf)
     SDL_Surface* fig = IMG_Load((IMG_PATH+fig_name).c_str());
 
     SDL_Rect coord;
-    coord.x = 518;
-    coord.y = 91;
+    coord.x = NEXT_POS_X;
+    coord.y = NEXT_POS_Y;
 
     SDL_BlitSurface(fig, NULL, srf, &coord);
     SDL_UpdateWindowSurface(win);

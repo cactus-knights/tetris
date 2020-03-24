@@ -34,7 +34,6 @@ class Game
 {
 	public:
 
-		//Game();
 		Field& GetField();
 		Field GetClearField();
 		Field GetNextFigure();
@@ -47,7 +46,6 @@ class Game
 		void MoveLeft();
 		void MoveRight();
 		bool isLose();
-		//void GoDownInstantly();
 
 		bool deletelines = false;
 	private:
@@ -81,7 +79,6 @@ class Game
 	private:
 		bool AbleToRotate();
 		void FieldReverse(Field& field);
-		//void CheckLines();
 
 		void CheckLines();
 		void DeleteLines();

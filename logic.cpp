@@ -1,5 +1,3 @@
-//#define _CRT_SECURE_NO_WARNINGS
-
 #include <iostream>
 #include <vector>
 #include <cstdio>
@@ -7,35 +5,6 @@
 #include "logic.h"
 
 using namespace std;
-
-//Game game;
-
-void print_figure(Field field, int n, int m , int x, int y)
-{
-	for(int i = 0; i < n; i++)
-	{
-		for(int j = 0; j < m; j++)
-		{
-			std::cout << field[x+i][y+j];
-		}
-
-		std::cout << std::endl;
-	}
-
-	std::cout << std::endl;
-}
-
-void print_field(Field field)
-{
-	for(auto i : field)
-	{
-		for(auto j : i)
-			std::cout << j;
-		std::cout << std::endl;
-	}
-
-	std::cout << std::endl;
-}
 
 Field& Game::GetField()
 {
@@ -236,20 +205,12 @@ void Game::FillFigures()
 		}
 	}
 	fclose(stdin);
-
-	print_field(Figures.vertical);
-	print_field(Figures.bwd_L_sh);
-	print_field(Figures.fwd_L_sh);
-	print_field(Figures.bwd_Z_sh);
 }
 
 void Game::SetFigToField(Field& figure, point LUcoord)
 {
 	Field field = GetField();
 	field[0] = std::vector<int>(FIELD_WIDTH, 0);
-
-	std::cout << (int)figure.size() << std::endl;
-	std::cout << (int)figure[0].size() << std::endl;
 
 	for (int i = 0; i < (int)figure.size(); i++)
 	{
