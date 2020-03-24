@@ -18,7 +18,7 @@ Glory to Cactus Tea Order 🌵!
 * **Aleksey Chensov** - *Coding* - [1007Leo](https://github.com/1007Leo)
 * **Andrey Gorshkov** - *Coding* - [sticky-tea](https://github.com/sticky-tea)
 * **Mikhail Levin** - *GUI* - [mephistolie](https://github.com/mephistolie)
-* **Mikhail Bobilev** - *Ideological lider*
+* **Mikhail Bobilev** - *Ideological leader*
 
 ## Acknowledgments
 * Andrey Melekhov
