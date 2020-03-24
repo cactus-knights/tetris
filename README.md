@@ -8,7 +8,7 @@ Project activity by first-year students of Southern Federal University (MMCS) �
 Glory to Cactus Tea Order 🌵!
 
 ## For Windows Users:
-### [🕹️ Download Release (Windows)](https://github.com/cactus-knights/tetris/releases)
+### [🕹️ Download Release](https://github.com/cactus-knights/tetris/releases)
 
 ## For Devs & Linux Users:
 #### [💻 Preparation, Compiling, Running](https://github.com/cactus-knights/tetris/blob/master/Preparation.md)
@@ -20,6 +20,6 @@ Glory to Cactus Tea Order 🌵!
 * **Mikhail Levin** - *GUI* - [mephistolie](https://github.com/mephistolie)
 * **Mikhail Bobilev** - *Ideological leader*
 
-## Acknowledgments
-* Andrey Melekhov
-* Aleksandr Abanin
+## Third-party sources
+* [More Perfect DOS VGA](http://laemeur.sdf.org/fonts/) font by [LÆMEUR](http://laemeur.sdf.org/)
+* *Final Fantasy I* NES sounds and *'Prelude'* theme by Nobuo Uematsu
