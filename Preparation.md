@@ -2,7 +2,7 @@
 Install appropriate SDL libraries.
 
 ## Windows/macOS
-Use [download links](https://www.libsdl.org/download-2.0.php) from [SDL website](https://www.libsdl.org)
+Use [download links](https://www.libsdl.org/download-2.0.php) from [SDL website](https://www.libsdl.org).
 
 ## Linux
 Use command suitable for you.
