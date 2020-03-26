@@ -47,6 +47,8 @@ class Game
 		void MoveRight();
 		bool isLose();
 
+		bool AbleToMove(Direction direction);
+
 		bool deletelines = false;
 	private:
 
@@ -68,15 +70,10 @@ class Game
 
 		std::vector<int> linesToDelete;
 
-	public:
 		void Start();
-	private:
 		void FillFigures();
 		void SetFigToField(Field& figure, point LUcoord);
 		void MoveFigure(Direction direction);
-	public:
-		bool AbleToMove(Direction direction);
-	private:
 		bool AbleToRotate();
 		void FieldReverse(Field& field);
 

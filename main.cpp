@@ -25,25 +25,20 @@
 	const std::string SND_PATH = "data\\snd\\";
 #endif
 
-const int BLOCK_SIZE = 22;
-
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
 const int START_POS_X = 210;
 const int START_POS_Y = 21;
 
-const int NEXT_POS_X = 518;
-const int NEXT_POS_Y = 91;
+const int NEXT_POS_X = 516;
+const int NEXT_POS_Y = 95;
 
 const int SCORE_POS_X = 473;
 const int SCORE_POS_Y = 232;
 
 const int SCORE_LOSE_POS_X = 250;
 const int SCORE_LOSE_POS_Y = 273;
-
-const int LEVEL_POS_X = 575;
-const int LEVEL_POS_Y = 256;
 
 const int NUM_SIZE = 20;
 
@@ -82,8 +77,8 @@ void draw_level(int level)
         SDL_Surface* lvlo = IMG_Load((IMG_PATH+name).c_str());
         SDL_Rect coord;
 
-        coord.x = NUM_SIZE*i + LEVEL_POS_X;
-        coord.y = LEVEL_POS_Y;
+        coord.x = NUM_SIZE*i + 575;
+        coord.y = 256;
 
         SDL_BlitSurface(lvlo, NULL, srf, &coord);
         SDL_UpdateWindowSurface(win);
@@ -145,8 +140,8 @@ void draw_field(Field& field)
             figures[k].second = field[i][j];
 
 			SDL_Rect coord;
-			coord.x = BLOCK_SIZE*j+START_POS_X;
-			coord.y = BLOCK_SIZE*(i-4)+START_POS_Y;
+			coord.x = 22*j+START_POS_X;
+			coord.y = 22*(i-4)+START_POS_Y;
 
 			SDL_BlitSurface(figures[k].first, NULL, srf, &coord);
 			SDL_UpdateWindowSurface(win);
@@ -172,8 +167,8 @@ void draw_next(Field nextf)
     SDL_Surface* fig = IMG_Load((IMG_PATH+fig_name).c_str());
 
     SDL_Rect coord;
-    coord.x = NEXT_POS_X;
-    coord.y = NEXT_POS_Y;
+    coord.x = 518;
+    coord.y = 91;
 
     SDL_BlitSurface(fig, NULL, srf, &coord);
     SDL_UpdateWindowSurface(win);
@@ -204,95 +199,41 @@ bool init()
 
 void quit() 
 {    
-    Mix_FreeChunk(moveSound);
-    Mix_FreeMusic(mainSound);
     SDL_DestroyWindow(win);
 
     SDL_Quit();
 }
 
-int main(int argc, char** argv)
+void reset()
 {
-	if(!init())
-		return -1;
+	for(int i = 0; i < 240; i++)
+	{
+		figures[i].first = NULL;
+		figures[i].second = 0;
+	}
+}
 
-    srand(time(NULL));
-
-    bool run = true;
-    bool isintro = true;
-
-    SDL_Surface* icon = IMG_Load((IMG_PATH+"favicon.png").c_str());
-    SDL_SetWindowIcon(win, icon);
-
-    SDL_Event e;
-
-    back = IMG_ReadXPMFromArray(back1_xpm);
-    introSound = Mix_LoadMUS((SND_PATH+"intro.wav").c_str());
-
-    int intro_start = SDL_GetTicks();
-    bool intron = false;
-
-    Mix_PlayMusic(introSound, -1);
-
-    while(run && isintro)
-    {
-    	while(SDL_PollEvent(&e) != 0)
-    	{
-            if (e.type == SDL_QUIT)
-            {
-                run = false;
-            }
-
-            if(e.type == SDL_KEYDOWN)
-            {
-            	if(e.key.keysym.sym == SDLK_SPACE)
-            		if(isintro)
-            		{
-            			SDL_FillRect(srf, NULL, 0x000000);
-            			back = IMG_ReadXPMFromArray(back_xpm);
-            			isintro = false;
-            			break;
-            		}
-            }
-        }
-
-        if(!isintro)
-            break;
-
-        if(SDL_GetTicks() > intro_start+400)
-        {
-            intron = !intron;
-            intro_start = SDL_GetTicks();
-        }
-
-        SDL_FreeSurface(back);
-
-        if(intron)
-        	back = IMG_ReadXPMFromArray(back1_xpm);
-        else
-        	back = IMG_ReadXPMFromArray(back2_xpm);
-
-        SDL_BlitSurface(back, NULL, srf, NULL);
-        SDL_UpdateWindowSurface(win);
-    }
-
-    Mix_HaltMusic();
-    Mix_FreeMusic(introSound);
-
-    Game tetris;
+void game()
+{
+   	Game tetris;
     int start_time = SDL_GetTicks();
+
+    SDL_FillRect(srf, NULL, SDL_MapRGB(srf->format, 0, 0, 0));
 
     moveSound = Mix_LoadWAV((SND_PATH+"moving.wav").c_str());
     pauseSound = Mix_LoadWAV((SND_PATH+"pause.wav").c_str());
     rotateSound = Mix_LoadWAV((SND_PATH+"rotate.wav").c_str());
     joinSound = Mix_LoadWAV((SND_PATH+"join.wav").c_str());
 
-    mainSound = Mix_LoadMUS((SND_PATH+"1_theme.wav").c_str());
+    back = IMG_ReadXPMFromArray(back_xpm);
 
     tetris.MakeMove();
 
+    bool run = true;
     bool lose = false;
     bool paused = false;
+
+    SDL_Event e;
 
     while(run)
     {
@@ -400,7 +341,7 @@ int main(int argc, char** argv)
     if(!lose)
     {
         quit();
-        return 0;
+        return;
     }
 
 
@@ -413,6 +354,8 @@ int main(int argc, char** argv)
 
     Mix_PlayChannel(-1,gameoverSound, 0);
 
+    bool reseted = false;
+
     while(run && lose)
     {
         while(SDL_PollEvent(&e) != 0)
@@ -421,8 +364,100 @@ int main(int argc, char** argv)
             {
                 run = false;
             }
+
+            else if(e.type == SDL_KEYDOWN)
+            {
+            	if(e.key.keysym.sym == SDLK_SPACE)
+            	{
+            		Mix_HaltChannel(-1);
+            		reset();
+            		reseted = true;
+            		break;
+            	}
+            }
         }
+
+        if(reseted)
+        	break;
     }
 
+    if(reseted)
+    	game();
     quit();
+}
+
+int main(int argc, char** argv)
+{
+	if(!init())
+		return -1;
+
+    srand(time(NULL));
+
+    bool run = true;
+    bool isintro = true;
+
+    SDL_Surface* icon = IMG_Load((IMG_PATH+"favicon.png").c_str());
+    SDL_SetWindowIcon(win, icon);
+
+    SDL_Event e;
+
+    back = IMG_ReadXPMFromArray(back1_xpm);
+    introSound = Mix_LoadMUS((SND_PATH+"intro.wav").c_str());
+
+    int intro_start = SDL_GetTicks();
+    bool intron = false;
+
+    Mix_PlayMusic(introSound, -1);
+
+    while(run && isintro)
+    {
+    	while(SDL_PollEvent(&e) != 0)
+    	{
+            if (e.type == SDL_QUIT)
+            {
+                run = false;
+            }
+
+            if(e.type == SDL_KEYDOWN)
+            {
+            	if(e.key.keysym.sym == SDLK_SPACE)
+            		if(isintro)
+            		{
+            			SDL_FillRect(srf, NULL, 0x000000);
+            			back = IMG_ReadXPMFromArray(back_xpm);
+            			isintro = false;
+            			break;
+            		}
+            }
+        }
+
+        if(!isintro)
+            break;
+
+        if(SDL_GetTicks() > intro_start+400)
+        {
+            intron = !intron;
+            intro_start = SDL_GetTicks();
+        }
+
+        SDL_FreeSurface(back);
+
+        if(intron)
+        	back = IMG_ReadXPMFromArray(back1_xpm);
+        else
+        	back = IMG_ReadXPMFromArray(back2_xpm);
+
+        SDL_BlitSurface(back, NULL, srf, NULL);
+        SDL_UpdateWindowSurface(win);
+    }
+
+    Mix_HaltMusic();
+    Mix_FreeMusic(introSound);
+
+    if(!run)
+    	return 0;
+
+    game();
+
+    return 0;
 }
