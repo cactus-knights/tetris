@@ -202,6 +202,11 @@ bool init()
 	return true;
 }
 
+void clean()
+{
+	SDL_FreeSurface(back);
+}
+
 void quit() 
 {    
     SDL_DestroyWindow(win);
@@ -218,17 +223,13 @@ void reset()
 	}
 }
 
-void game()
+//void game()
+bool game()
 {
    	Game tetris;
     int start_time = SDL_GetTicks();
 
     SDL_FillRect(srf, NULL, SDL_MapRGB(srf->format, 0, 0, 0));
-
-    moveSound = Mix_LoadWAV((SND_PATH+"moving.wav").c_str());
-    pauseSound = Mix_LoadWAV((SND_PATH+"pause.wav").c_str());
-    rotateSound = Mix_LoadWAV((SND_PATH+"rotate.wav").c_str());
-    joinSound = Mix_LoadWAV((SND_PATH+"join.wav").c_str());
 
     back = IMG_ReadXPMFromArray(back_xpm);
 
@@ -259,6 +260,7 @@ void game()
 
                     if(paused)
                     {
+                        SDL_FreeSurface(back);
                         back = IMG_ReadXPMFromArray(back4_xpm);
                         SDL_BlitSurface(back, NULL, srf, NULL);
                         SDL_UpdateWindowSurface(win);
@@ -266,6 +268,7 @@ void game()
 
                     else
                     {
+                        SDL_FreeSurface(back);
                         back = IMG_ReadXPMFromArray(back_xpm);
                     }
                 }
@@ -343,19 +346,18 @@ void game()
 
     Mix_HaltMusic();
 
-    if(!lose)
+    if (!lose)
     {
-        quit();
-        return;
+    	clean();
+        return false;
     }
 
+    SDL_FreeSurface(back);
 
     back = IMG_ReadXPMFromArray(back3_xpm);
     SDL_BlitSurface(back, NULL, srf, NULL);
     draw_scores(tetris.GetScore(), true);
     SDL_UpdateWindowSurface(win);
-
-    gameoverSound = Mix_LoadWAV((SND_PATH+"gameover.wav").c_str());
 
     Mix_PlayChannel(-1,gameoverSound, 0);
 
@@ -386,9 +388,11 @@ void game()
         	break;
     }
 
-    if(reseted)
-    	game();
-    quit();
+    clean();
+
+    if (reseted)
+        return true;
+    return false;
 }
 
 int main(int argc, char** argv)
@@ -462,7 +466,17 @@ int main(int argc, char** argv)
     if(!run)
     	return 0;
 
-    game();
+    moveSound = Mix_LoadWAV((SND_PATH+"moving.wav").c_str());
+    pauseSound = Mix_LoadWAV((SND_PATH+"pause.wav").c_str());
+    rotateSound = Mix_LoadWAV((SND_PATH+"rotate.wav").c_str());
+    joinSound = Mix_LoadWAV((SND_PATH+"join.wav").c_str());
+    gameoverSound = Mix_LoadWAV((SND_PATH+"gameover.wav").c_str());
+
+    //game();
+    bool flag = game();
+    while(flag)
+        flag = game();
+    quit();
 
     return 0;
 }
