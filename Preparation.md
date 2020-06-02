@@ -30,7 +30,7 @@ $ git clone https://github.com/cactus-knights/tetris
 
 $ cd tetris
 
-$ g++ main.cpp logic.cpp -lSDL2 -lSDL2_image -lSDL2_mixer -o tetris
+$ make && sudo make install
 ```
 
 # Running
@@ -38,5 +38,5 @@ $ g++ main.cpp logic.cpp -lSDL2 -lSDL2_image -lSDL2_mixer -o tetris
 ## Linux
 Use commands:
 ```bash
-$ ./tetris
+$ tetris
 ```
