@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-#include <cstdio>
 #include <ctime>
 #include "logic.h"
 
@@ -88,7 +87,7 @@ void Game::Rotate()
 	int y = this->CurCoord.y;
 
 	auto NFigure = vector< vector<int> >(m, vector<int>(n, 0));
- 
+
     for(size_t i(0); i < m; i++)
     {
         for(size_t j(0); j < n; j++)
@@ -107,7 +106,7 @@ void Game::Rotate()
     int t = this->CurSize.first;
     this->CurSize.first = this->CurSize.second;
     this->CurSize.second = t;
-} 
+}
 
 
 void Game::MoveLeft()
@@ -166,49 +165,13 @@ void Game::Start()
 
 void Game::FillFigures()
 {
-	freopen("Figures.txt", "r", stdin);
-	for (int i = 0; i < 7; i++)
-	{
-		int n, m;
-		cin >> n >> m;
-		Field temp = vector< vector<int> >(n, vector<int>(m, 0));
-		for (int j = 0; j < n; j++)
-		{
-			for (int k = 0; k < m; k++)
-			{
-				cin >> temp[j][k];
-			}
-		}
-		switch(i)
-		{
-			case 0:
-				this->Figures.vertical = temp;
-				break;
-			case 1:
-				this->Figures.bwd_L_sh = temp;
-				break;
-			case 2:
-				this->Figures.fwd_L_sh = temp;
-				break;
-			case 3:
-				this->Figures.bwd_Z_sh = temp;
-				break;
-			case 4:
-				this->Figures.fwd_Z_sh = temp;
-				break;
-			case 5:
-				this->Figures.T_Shaped = temp;
-				break;
-			case 6:
-				this->Figures.Square = temp;
-				break;
-			default:
-				break;
-		}
-	}
-	std::cin.clear();
-
-	fclose(stdin);
+		this->Figures.vertical = {{1}, {1}, {1}, {1}};
+		this->Figures.bwd_L_sh = {{0,2}, {0,2}, {2,2}};
+		this->Figures.fwd_L_sh = {{3,0}, {3,0}, {3,3}};
+		this->Figures.bwd_Z_sh = {{0,4,4}, {4,4,0}};
+		this->Figures.fwd_Z_sh = {{5,5,0}, {0,5,5}};
+		this->Figures.T_Shaped = {{0,6,0}, {6,6,6}};
+		this->Figures.Square = {{7,7}, {7,7}};
 }
 
 void Game::SetFigToField(Field& figure, point LUcoord)
@@ -294,7 +257,7 @@ void Game::MoveFigure(Direction direction)
 }
 
 bool Game::AbleToMove(Direction direction)
-{	
+{
 	Field field = GetField();
 	Field cfield = GetClearField();
 	int n = this->CurSize.first;
@@ -348,7 +311,7 @@ bool Game::AbleToRotate()
 	int m = this->CurSize.second;
 	int x = this->CurCoord.x;
 	int y = this->CurCoord.y;
- 
+
 	if(x + m > this->FIELD_HEIGHT || y + n > this->FIELD_WIDTH)
 		return false;
 
@@ -368,7 +331,7 @@ bool Game::AbleToRotate()
         {
         	if(x+n-j >= this->FIELD_HEIGHT)
         		return false;
-            if(cfield[x+n-j][y+i] != 0) 
+            if(cfield[x+n-j][y+i] != 0)
             	return false;
         }
     }
